@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item — Find My Stuff Campus</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/styles2.css">
+</head>
+<body class="bodystyle">
+
+<!-- NAV -->
+<div class="firstDiv">
+    <div class="buttons">
+        <button type="button" class="addItem" onclick="window.location.href='addItems.html'">Add Item</button>
+        <button type="button" class="seeItems" onclick="window.location.href='items.html'">See Items</button>
+        <button type="button" class="addItem" onclick="window.location.href='index.html'">Home</button>
+    </div>
+    <div class="searchBar">
+        <input class="search js-search" placeholder="Search for a lost item..." type="search">
+    </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-intro">
+    <h2>Report a Found Item</h2>
+    <p>Fill in the details below to help a fellow student find their lost belongings</p>
+    <button class="btn-gold" style="margin-top:16px;" onclick="window.location.href='reportMissing.html'">
+        🔔 Report Your Missing Item
+    </button>
+</div>
+
+<!-- FORMS -->
+<div style="display:flex;flex-wrap:wrap;justify-content:center;padding:32px 16px 48px;gap:0;max-width:1200px;margin:0 auto;">
+
+    <!-- Student Card -->
+    <div class="listItems">
+        <div class="ikeXarra">
+            <span class="form-icon">🪪</span>
+            <h3 class="addHeaders">Lost Student Card</h3>
+            <h1 class="boxName">Surname & Initials</h1>
+            <div class="box_Name"><input class="inputBox js-surInit" placeholder="e.g. Dlamini TK"></div>
+            <h1 class="boxName">Student Number</h1>
+            <div class="box_Name"><input class="inputBox js-stdNo" placeholder="9-digit student number"></div>
+            <h1 class="boxName">Campus Found</h1>
+            <div class="box_Name">
+                <select class="inputBox js-stdLoc">
+                    <option value="">— Select Campus —</option>
+                    <option value="APK - Auckland Park Kingsway">APK - Auckland Park Kingsway</option>
+                    <option value="APB - Auckland Park Bunting Road">APB - Auckland Park Bunting Road</option>
+                    <option value="DFC - Doornfontein Campus">DFC - Doornfontein Campus</option>
+                    <option value="SWC - Soweto Campus">SWC - Soweto Campus</option>
+                </select>
+            </div>
+            <h1 class="boxName">Date Found</h1>
+            <div class="box_Name"><input type="date" class="inputBox js-stdDate"></div>
+            <h1 class="boxName">Photo of Card</h1>
+            <div class="box_Name">
+                <input type="file" class="js-stdPhoto" accept="image/*">
+                <span class="file-hint">JPG, PNG or WEBP · max 5MB</span>
+            </div>
+            <button class="submitButton js-studentCard" onclick="addStudentcard()">Submit Card</button>
+        </div>
+    </div>
+
+    <!-- ID Card -->
+    <div class="listItems">
+        <div class="ikeXarra">
+            <span class="form-icon">🪪</span>
+            <h3 class="addHeaders">Lost ID Card</h3>
+            <h1 class="boxName">Full Name (on card)</h1>
+            <div class="box_Name"><input class="inputBox js-idFullName" placeholder="e.g. Bongani Raphiri"></div>
+            <h1 class="boxName">ID Number</h1>
+            <div class="box_Name"><input class="inputBox js-idNumber" placeholder="13-digit ID number"></div>
+            <h1 class="boxName">Campus Found</h1>
+            <div class="box_Name">
+                <select class="inputBox js-idLoc">
+                    <option value="">— Select Campus —</option>
+                    <option value="APK - Auckland Park Kingsway">APK - Auckland Park Kingsway</option>
+                    <option value="APB - Auckland Park Bunting Road">APB - Auckland Park Bunting Road</option>
+                    <option value="DFC - Doornfontein Campus">DFC - Doornfontein Campus</option>
+                    <option value="SWC - Soweto Campus">SWC - Soweto Campus</option>
+                </select>
+            </div>
+            <h1 class="boxName">Date Found</h1>
+            <div class="box_Name"><input type="date" class="inputBox js-idDate"></div>
+            <h1 class="boxName">Photo of ID Card</h1>
+            <div class="box_Name">
+                <input type="file" class="js-idPhoto" accept="image/*">
+                <span class="file-hint">JPG, PNG or WEBP · max 5MB</span>
+            </div>
+            <button class="submitButton js-idCard">Submit ID Card</button>
+        </div>
+    </div>
+
+    <!-- Driver's License -->
+    <div class="listItems">
+        <div class="ikeXarra">
+            <span class="form-icon">🚗</span>
+            <h3 class="addHeaders">Lost Driver's License</h3>
+            <h1 class="boxName">Full Name (on card)</h1>
+            <div class="box_Name"><input class="inputBox js-dlFullName" placeholder="e.g. Bongani Raphiri"></div>
+            <h1 class="boxName">License Number</h1>
+            <div class="box_Name"><input class="inputBox js-dlNumber" placeholder="Driver's license number"></div>
+            <h1 class="boxName">Campus Found</h1>
+            <div class="box_Name">
+                <select class="inputBox js-dlLoc">
+                    <option value="">— Select Campus —</option>
+                    <option value="APK - Auckland Park Kingsway">APK - Auckland Park Kingsway</option>
+                    <option value="APB - Auckland Park Bunting Road">APB - Auckland Park Bunting Road</option>
+                    <option value="DFC - Doornfontein Campus">DFC - Doornfontein Campus</option>
+                    <option value="SWC - Soweto Campus">SWC - Soweto Campus</option>
+                </select>
+            </div>
+            <h1 class="boxName">Date Found</h1>
+            <div class="box_Name"><input type="date" class="inputBox js-dlDate"></div>
+            <h1 class="boxName">Photo of License</h1>
+            <div class="box_Name">
+                <input type="file" class="js-dlPhoto" accept="image/*">
+                <span class="file-hint">JPG, PNG or WEBP · max 5MB</span>
+            </div>
+            <button class="submitButton js-driversLicense">Submit Driver's License</button>
+        </div>
+    </div>
+
+    <!-- Device -->
+    <div class="listItems">
+        <div class="ikeXarra">
+            <span class="form-icon">💻</span>
+            <h3 class="addHeaders">Lost Device</h3>
+            <h1 class="boxName">Device Name</h1>
+            <div class="box_Name"><input class="inputBox js-devName" placeholder="e.g. MacBook Pro"></div>
+            <h1 class="boxName">Device Type</h1>
+            <div class="box_Name"><input class="inputBox js-devType" placeholder="e.g. Laptop, Phone, Tablet"></div>
+            <h1 class="boxName">Campus Found</h1>
+            <div class="box_Name">
+                <select class="inputBox js-devLoc">
+                    <option value="">— Select Campus —</option>
+                    <option value="APK - Auckland Park Kingsway">APK - Auckland Park Kingsway</option>
+                    <option value="APB - Auckland Park Bunting Road">APB - Auckland Park Bunting Road</option>
+                    <option value="DFC - Doornfontein Campus">DFC - Doornfontein Campus</option>
+                    <option value="SWC - Soweto Campus">SWC - Soweto Campus</option>
+                </select>
+            </div>
+            <h1 class="boxName">Date Found</h1>
+            <div class="box_Name"><input type="date" class="inputBox js-devDate"></div>
+            <h1 class="boxName">Photo of Device</h1>
+            <div class="box_Name">
+                <input type="file" class="js-devPic" accept="image/*">
+                <span class="file-hint">JPG, PNG or WEBP · max 5MB</span>
+            </div>
+            <button class="submitButton js-device">Submit Device</button>
+        </div>
+    </div>
+
+    <!-- Other Item -->
+    <div class="listItems">
+        <div class="ikeXarra">
+            <span class="form-icon">🎒</span>
+            <h3 class="addHeaders">Other Lost Item</h3>
+            <h1 class="boxName">Item Name / Description</h1>
+            <div class="box_Name"><input class="inputBox js-itemDesc" placeholder="e.g. Black umbrella, House keys"></div>
+            <h1 class="boxName">Colour</h1>
+            <div class="box_Name"><input class="inputBox js-itemColor" placeholder="e.g. Black, Red, Blue"></div>
+            <h1 class="boxName">Campus Found</h1>
+            <div class="box_Name">
+                <select class="inputBox js-itemLoc">
+                    <option value="">— Select Campus —</option>
+                    <option value="APK - Auckland Park Kingsway">APK - Auckland Park Kingsway</option>
+                    <option value="APB - Auckland Park Bunting Road">APB - Auckland Park Bunting Road</option>
+                    <option value="DFC - Doornfontein Campus">DFC - Doornfontein Campus</option>
+                    <option value="SWC - Soweto Campus">SWC - Soweto Campus</option>
+                </select>
+            </div>
+            <h1 class="boxName">Date Found</h1>
+            <div class="box_Name"><input type="date" class="inputBox js-itemDate"></div>
+            <h1 class="boxName">Photo of Item</h1>
+            <div class="box_Name">
+                <input type="file" class="js-itemPic" accept="image/*">
+                <span class="file-hint">JPG, PNG or WEBP · max 5MB</span>
+            </div>
+            <button class="submitButton js-otherItem">Submit Item</button>
+        </div>
+    </div>
+
+    <!-- Bank Card -->
+    <div class="listItems">
+        <div class="ikeXarra">
+            <span class="form-icon">💳</span>
+            <h3 class="addHeaders">Lost Bank Card</h3>
+            <h1 class="boxName">Card Number</h1>
+            <div class="box_Name"><input class="inputBox js-bankCardNo" placeholder="16-digit card number"></div>
+            <h1 class="boxName">Campus Found</h1>
+            <div class="box_Name">
+                <select class="inputBox js-bankCardLoc">
+                    <option value="">— Select Campus —</option>
+                    <option value="APK - Auckland Park Kingsway">APK - Auckland Park Kingsway</option>
+                    <option value="APB - Auckland Park Bunting Road">APB - Auckland Park Bunting Road</option>
+                    <option value="DFC - Doornfontein Campus">DFC - Doornfontein Campus</option>
+                    <option value="SWC - Soweto Campus">SWC - Soweto Campus</option>
+                </select>
+            </div>
+            <h1 class="boxName">Date Found</h1>
+            <div class="box_Name"><input type="date" class="inputBox js-bankCardDate"></div>
+            <button class="submitButton js-bankCard">Submit Bank Card</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="aura">
+    <div class="footer-logo">Find My Stuff <span>Campus</span></div>
+    <div class="contactUs"><p class="contactUs2">Contact Us</p></div>
+    <div class="platForms">
+        <img src="../pages/images/gmail-icon-free-png.webp" class="gmail-Icon">
+        <img src="../pages/images/linkedIn_PNG27.png" class="tikTok-Icon" onclick="window.location.href='https://www.linkedin.com/in/bongani-raphiri-171868316/'">
+    </div>
+    <button class="aboutUs" type="button" onclick="window.location.href='aboutUs.html'">About Us</button>
+    <p class="copyRigt">Copyright © 2026 - Find My Stuff Campus.</p>
+</div>
+
+<script src="../script-Files/studentCards.js"></script>
+<script src="../script-Files/idCard.js"></script>
+<script src="../script-Files/driversLicense.js"></script>
+<script src="../script-Files/devices.js"></script>
+<script src="../script-Files/otherItems.js"></script>
+<script src="../script-Files/bankCards.js"></script>
+</body>
+</html>

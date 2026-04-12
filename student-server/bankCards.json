@@ -1,0 +1,19 @@
+[
+  {
+    "Card_Number": "1234567890123",
+    "Location": "Safekeeping UJ",
+    "timestamp": "2026-04-11T05:45:03.312Z"
+  },
+  {
+    "Card_Number": "asdfg",
+    "Location": "sdf",
+    "timestamp": "2026-04-11T05:46:51.736Z"
+  },
+  {
+    "id": 1775891142290,
+    "Card_Number": "1234567890123456",
+    "Location": "APK - Auckland Park Kingsway",
+    "Date_Found": "2026-04-11",
+    "timestamp": "2026-04-11T07:05:42.290Z"
+  }
+]

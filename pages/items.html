@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Items — Find My Stuff Campus</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/styles2.css">
+</head>
+<body class="bodystyle">
+
+<!-- NAV -->
+<div class="firstDiv">
+    <div class="buttons">
+        <button type="button" class="addItem" onclick="window.location.href='addItems.html'">Add Item</button>
+        <button type="button" class="addItem" onclick="window.location.href='index.html'">Home</button>
+    </div>
+    <div class="searchBar">
+        <input class="search js-search" placeholder="Search by name, number, campus, colour..." type="search">
+        <p style="font-size:12px;color:rgba(255,255,255,0.55);margin:6px auto 0;text-align:center;font-family:var(--font);">
+            Search by name, surname, student number, campus, device type, colour, or date found
+        </p>
+    </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+    <label>Filter by:</label>
+    <select class="js-filter-type">
+        <option value="all">All Categories</option>
+        <option value="student-cards">🪪 Student Cards</option>
+        <option value="id-cards">🪪 ID Cards</option>
+        <option value="drivers-licenses">🚗 Driver's Licenses</option>
+        <option value="devices">💻 Devices</option>
+        <option value="other-items">🎒 Other Items</option>
+        <option value="bank-cards">💳 Bank Cards</option>
+    </select>
+    <select class="js-filter-campus">
+        <option value="all">All Campuses</option>
+        <option value="APK - Auckland Park Kingsway">APK</option>
+        <option value="APB - Auckland Park Bunting Road">APB</option>
+        <option value="DFC - Doornfontein Campus">DFC</option>
+        <option value="SWC - Soweto Campus">SWC</option>
+    </select>
+    <button class="btn-gold" style="padding:8px 18px;font-size:13px;" onclick="window.location.href='reportMissing.html'">
+        🔔 Report Missing Item
+    </button>
+</div>
+
+<!-- ITEMS -->
+<div class="items-container">
+
+    <div class="js-student-cards-section">
+        <h2 class="section-title">🪪 Student Cards</h2>
+        <div class="items-grid js-student-cards"></div>
+    </div>
+
+    <div class="js-id-cards-section">
+        <h2 class="section-title">🪪 ID Cards</h2>
+        <div class="items-grid js-id-cards"></div>
+    </div>
+
+    <div class="js-drivers-licenses-section">
+        <h2 class="section-title">🚗 Driver's Licenses</h2>
+        <div class="items-grid js-drivers-licenses"></div>
+    </div>
+
+    <div class="js-devices-section">
+        <h2 class="section-title">💻 Devices</h2>
+        <div class="items-grid js-devices"></div>
+    </div>
+
+    <div class="js-other-items-section">
+        <h2 class="section-title">🎒 Other Items</h2>
+        <div class="items-grid js-other-items"></div>
+    </div>
+
+    <div class="js-bank-cards-section">
+        <h2 class="section-title">💳 Bank Cards</h2>
+        <div class="items-grid js-bank-cards"></div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="aura" style="margin-top:40px;">
+    <div class="footer-logo">Find My Stuff <span>Campus</span></div>
+    <div class="contactUs"><p class="contactUs2">Contact Us</p></div>
+    <div class="platForms">
+        <img src="../pages/images/gmail-icon-free-png.webp" class="gmail-Icon">
+        <img src="../pages/images/linkedIn_PNG27.png" class="tikTok-Icon" onclick="window.location.href='https://www.linkedin.com/in/bongani-raphiri-171868316/'">
+    </div>
+    <button class="aboutUs" type="button" onclick="window.location.href='aboutUs.html'">About Us</button>
+    <p class="copyRigt">Copyright © 2026 - Find My Stuff Campus.</p>
+</div>
+
+<script>
+    let allData = { studentCards: [], idCards: [], driversLicenses: [], devices: [], items: [], bankCards: [] };
+
+    async function loadAllItems() {
+        try {
+            const [cards, idCards, licenses, devices, items, bankCards] = await Promise.all([
+                fetch('http://localhost:3000/api/get-student-cards').then(r => r.json()),
+                fetch('http://localhost:3000/api/get-id-cards').then(r => r.json()),
+                fetch('http://localhost:3000/api/get-drivers-licenses').then(r => r.json()),
+                fetch('http://localhost:3000/api/get-devices').then(r => r.json()),
+                fetch('http://localhost:3000/api/get-items').then(r => r.json()),
+                fetch('http://localhost:3000/api/get-bank-cards').then(r => r.json())
+            ]);
+            allData.studentCards = cards;
+            allData.idCards = idCards;
+            allData.driversLicenses = licenses;
+            allData.devices = devices;
+            allData.items = items;
+            allData.bankCards = bankCards;
+            renderAll();
+        } catch (error) {
+            console.error('Error loading items:', error);
+            alert('Unable to connect to the server. Make sure the server is running.');
+        }
+    }
+
+    function renderAll() {
+        const search = document.querySelector('.js-search').value.toLowerCase();
+        const typeFilter = document.querySelector('.js-filter-type').value;
+        const campusFilter = document.querySelector('.js-filter-campus').value;
+
+        renderSection('.js-student-cards', '.js-student-cards-section', allData.studentCards, 'student-cards', typeFilter, campusFilter, search,
+            card => `<div class="item-card-body">
+                <p><strong>${card.Surname_Initials}</strong></p>
+                <p>Std No: ${card.Student_Number}</p>
+                <p>📍 ${card.Location}</p>
+                <p>📅 ${card.Date_Found || 'N/A'}</p>
+                <span class="item-card-tag">Student Card</span>
+            </div>`);
+
+        renderSection('.js-id-cards', '.js-id-cards-section', allData.idCards, 'id-cards', typeFilter, campusFilter, search,
+            card => `<div class="item-card-body">
+                <p><strong>${card.Full_Name}</strong></p>
+                <p>ID No: ${card.ID_Number}</p>
+                <p>📍 ${card.Location}</p>
+                <p>📅 ${card.Date_Found || 'N/A'}</p>
+                <span class="item-card-tag">ID Card</span>
+            </div>`);
+
+        renderSection('.js-drivers-licenses', '.js-drivers-licenses-section', allData.driversLicenses, 'drivers-licenses', typeFilter, campusFilter, search,
+            license => `<div class="item-card-body">
+                <p><strong>${license.Full_Name}</strong></p>
+                <p>License No: ${license.License_Number}</p>
+                <p>📍 ${license.Location}</p>
+                <p>📅 ${license.Date_Found || 'N/A'}</p>
+                <span class="item-card-tag">Driver's License</span>
+            </div>`);
+
+        renderSection('.js-devices', '.js-devices-section', allData.devices, 'devices', typeFilter, campusFilter, search,
+            device => `<div class="item-card-body">
+                <p><strong>${device.Device_Name}</strong></p>
+                <p>Type: ${device.Device_Type}</p>
+                <p>📍 ${device.Location}</p>
+                <p>📅 ${device.Date_Found || 'N/A'}</p>
+                <span class="item-card-tag">Device</span>
+            </div>`);
+
+        renderSection('.js-other-items', '.js-other-items-section', allData.items, 'other-items', typeFilter, campusFilter, search,
+            item => `<div class="item-card-body">
+                <p><strong>${item.Item_Description}</strong></p>
+                <p>Colour: ${item.Color}</p>
+                <p>📍 ${item.Location}</p>
+                <p>📅 ${item.Date_Found || 'N/A'}</p>
+                <span class="item-card-tag">Other Item</span>
+            </div>`);
+
+        renderSection('.js-bank-cards', '.js-bank-cards-section', allData.bankCards, 'bank-cards', typeFilter, campusFilter, search,
+            card => `<div class="item-card-body">
+                <p><strong>**** **** **** ${card.Card_Number.slice(-4)}</strong></p>
+                <p>📍 ${card.Location}</p>
+                <p>📅 ${card.Date_Found || 'N/A'}</p>
+                <span class="item-card-tag">Bank Card</span>
+            </div>`);
+    }
+
+    function renderSection(gridSelector, sectionSelector, data, category, typeFilter, campusFilter, search, templateFn) {
+        const grid = document.querySelector(gridSelector);
+        const section = document.querySelector(sectionSelector);
+
+        if (typeFilter !== 'all' && typeFilter !== category) { section.style.display = 'none'; return; }
+        section.style.display = 'block';
+
+        const filtered = data.filter(item => {
+            const matchesCampus = campusFilter === 'all' || item.Location === campusFilter;
+            const matchesSearch = Object.values(item).some(val => String(val).toLowerCase().includes(search));
+            return matchesCampus && matchesSearch;
+        });
+
+        grid.innerHTML = filtered.length === 0
+            ? '<p class="no-items">No items found.</p>'
+            : filtered.map(item => `
+                <div class="item-card">
+                    ${item.photo ? `<img src="http://localhost:3000/uploads/${item.photo}" alt="photo">` : ''}
+                    ${templateFn(item)}
+                </div>`).join('');
+    }
+
+    document.querySelector('.js-search').addEventListener('input', renderAll);
+    document.querySelector('.js-filter-type').addEventListener('change', renderAll);
+    document.querySelector('.js-filter-campus').addEventListener('change', renderAll);
+
+    loadAllItems();
+</script>
+
+</body>
+</html>

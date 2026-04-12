@@ -1,0 +1,26 @@
+[
+  {
+    "Item_Description": "Umbrella",
+    "Color": "Black",
+    "Location": "Safekeeping APK",
+    "photo": "1775886168347-umbrella.jpg",
+    "timestamp": "2026-04-11T05:42:48.374Z"
+  },
+  {
+    "Item_Description": "Samsung S22",
+    "Color": "Black Blue",
+    "Location": "Safekeeping DFC",
+    "photo": "1775886249656-smartPhone.avif",
+    "timestamp": "2026-04-11T05:44:09.682Z"
+  },
+  {
+    "id": 1775887100944,
+    "Item_Description": "BMW m135 car keys",
+    "Color": "Black",
+    "Location": "APB - Auckland Park Bunting Road",
+    "Date_Found": "2026-04-11",
+    "photo": "1775887100936-keys.jpg",
+    "claimed": false,
+    "timestamp": "2026-04-11T05:58:20.944Z"
+  }
+]

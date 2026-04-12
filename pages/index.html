@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find My Stuff Campus</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <style>
+        .searchBar { position: relative; }
+    </style>
+</head>
+<body class="bodystyle">
+
+<!-- NAV -->
+<div class="firstDiv">
+    <div class="buttons">
+        <button type="button" class="addItem" onclick="window.location.href='addItems.html'">Add Item</button>
+        <button type="button" class="seeItems" onclick="window.location.href='items.html'">See Items</button>
+    </div>
+    <div class="searchBar">
+        <input class="search js-search" placeholder="Search for a lost item..." type="search">
+        <p style="font-size:12px;color:rgba(255,255,255,0.55);margin:6px auto 0;text-align:center;max-width:580px;font-family:var(--font);">
+            Search by name, student number, campus, device type, colour, or date
+        </p>
+        <div class="search-results js-search-results"></div>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero-section">
+    <div class="slideshow-Container" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
+        <div class="pictures"><img src="../pages/images/studentCard.jpeg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="../pages/images/smartPhone.avif" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="../pages/images/bankCard.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="../pages/images/keys.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="../pages/images/airPods.webp" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="../pages/images/nikeBag.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="../pages/images/mandelaID.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="../pages/images/drivers-licence.webp" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="../pages/images/pcMouse.webp" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+    </div>
+    <div style="position:relative;z-index:1;">
+        <h1 class="hero-title">Lost something at <span>campus?</span><br>We'll help you find it.</h1>
+        <p class="hero-sub">A real-time lost & found platform for UJ students. Submit found items or search for yours — all in one place.</p>
+        <div class="hero-btns">
+            <button class="btn-gold" onclick="window.location.href='items.html'">Browse Lost Items</button>
+            <button class="btn-ghost" onclick="window.location.href='addItems.html'">Report Found Item</button>
+        </div>
+    </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+    <h2 class="section-heading" style="text-align:center;font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;">How it works</h2>
+    <p style="text-align:center;color:var(--text-muted);font-size:14px;max-width:480px;margin:0 auto 32px;">Three simple steps to reunite students with their belongings</p>
+    <div class="how-grid">
+        <div class="how-step">
+            <div class="step-number">1</div>
+            <div class="step-title">Someone finds an item</div>
+            <div class="step-desc">A student or staff member finds a lost item on campus and submits it here with a photo and location.</div>
+        </div>
+        <div class="how-step">
+            <div class="step-number">2</div>
+            <div class="step-title">It gets listed instantly</div>
+            <div class="step-desc">The item appears on our platform in real time, visible to all UJ students searching for their lost belongings.</div>
+        </div>
+        <div class="how-step">
+            <div class="step-number">3</div>
+            <div class="step-title">Owner finds & collects</div>
+            <div class="step-desc">The owner searches, finds their item, notes the location, and goes to collect it from safekeeping.</div>
+        </div>
+    </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="categories-section">
+    <h2 class="section-heading">What can you find here?</h2>
+    <div class="categories-grid">
+        <div class="category-card" onclick="window.location.href='items.html'">
+            <div class="category-icon">🪪</div>
+            <div class="category-name">Student Cards</div>
+            <div class="category-desc">Lost UJ student cards listed by name & number</div>
+        </div>
+        <div class="category-card" onclick="window.location.href='items.html'">
+            <div class="category-icon">💻</div>
+            <div class="category-name">Devices</div>
+            <div class="category-desc">Laptops, phones, tablets and more</div>
+        </div>
+        <div class="category-card" onclick="window.location.href='items.html'">
+            <div class="category-icon">💳</div>
+            <div class="category-name">Bank Cards</div>
+            <div class="category-desc">Found cards listed safely with last 4 digits only</div>
+        </div>
+        <div class="category-card" onclick="window.location.href='items.html'">
+            <div class="category-icon">🎒</div>
+            <div class="category-name">Other Items</div>
+            <div class="category-desc">Keys, bags, umbrellas, and anything else</div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="aura">
+    <div class="footer-logo">Find My Stuff <span>Campus</span></div>
+    <div class="contactUs">
+        <p class="contactUs2">Contact Us</p>
+    </div>
+    <div class="platForms">
+        <img src="../pages/images/gmail-icon-free-png.webp" class="gmail-Icon">
+        <img src="../pages/images/linkedIn_PNG27.png" class="tikTok-Icon" onclick="window.location.href='https://www.linkedin.com/in/bongani-raphiri-171868316/'">
+    </div>
+    <button class="aboutUs" type="button" onclick="window.location.href='aboutUs.html'">About Us</button>
+    <p class="copyRigt">Copyright © 2026 - Find My Stuff Campus.</p>
+</div>
+
+<script>
+    // ── SLIDESHOW ──
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        const slides = document.getElementsByClassName('pictures');
+        for (let i = 0; i < slides.length; i++) slides[i].style.display = 'none';
+        slideIndex++;
+        if (slideIndex > slides.length) slideIndex = 1;
+        slides[slideIndex - 1].style.display = 'block';
+        setTimeout(showSlides, 2000);
+    }
+
+    // ── SEARCH ──
+    let allData = { studentCards: [], devices: [], items: [], bankCards: [] };
+
+    async function loadAllItems() {
+        try {
+            const [cards, devices, items, bankCards] = await Promise.all([
+                fetch('http://localhost:3000/api/get-student-cards').then(r => r.json()),
+                fetch('http://localhost:3000/api/get-devices').then(r => r.json()),
+                fetch('http://localhost:3000/api/get-items').then(r => r.json()),
+                fetch('http://localhost:3000/api/get-bank-cards').then(r => r.json())
+            ]);
+            allData.studentCards = cards;
+            allData.devices = devices;
+            allData.items = items;
+            allData.bankCards = bankCards;
+        } catch (error) {
+            console.error('Could not load items for search:', error);
+        }
+    }
+
+    function handleSearch() {
+        const query = document.querySelector('.js-search').value.toLowerCase().trim();
+        const resultsBox = document.querySelector('.js-search-results');
+
+        if (!query) { resultsBox.style.display = 'none'; return; }
+
+        const matches = [];
+
+        allData.studentCards.forEach(card => {
+            if (Object.values(card).some(v => String(v).toLowerCase().includes(query))) {
+                matches.push({ category: 'Student Card', title: card.Surname_Initials, detail: `Std No: ${card.Student_Number} · ${card.Location}` });
+            }
+        });
+        allData.devices.forEach(device => {
+            if (Object.values(device).some(v => String(v).toLowerCase().includes(query))) {
+                matches.push({ category: 'Device', title: device.Device_Name, detail: `${device.Device_Type} · ${device.Location}` });
+            }
+        });
+        allData.items.forEach(item => {
+            if (Object.values(item).some(v => String(v).toLowerCase().includes(query))) {
+                matches.push({ category: 'Other Item', title: item.Item_Description, detail: `${item.Color} · ${item.Location}` });
+            }
+        });
+        allData.bankCards.forEach(card => {
+            if (Object.values(card).some(v => String(v).toLowerCase().includes(query))) {
+                matches.push({ category: 'Bank Card', title: `**** **** **** ${card.Card_Number.slice(-4)}`, detail: card.Location });
+            }
+        });
+
+        if (matches.length === 0) {
+            resultsBox.innerHTML = '<p class="no-results">No items found.</p>';
+        } else {
+            resultsBox.innerHTML = matches.map(m => `
+                <div class="search-result-item" onclick="window.location.href='items.html'">
+                    <div class="search-result-category">${m.category}</div>
+                    <strong>${m.title}</strong>
+                    <span>${m.detail}</span>
+                </div>
+            `).join('');
+        }
+        resultsBox.style.display = 'block';
+    }
+
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.searchBar')) {
+            document.querySelector('.js-search-results').style.display = 'none';
+        }
+    });
+
+    document.querySelector('.js-search').addEventListener('input', handleSearch);
+    loadAllItems();
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Missing Item — Find My Stuff Campus</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/styles2.css">
+</head>
+<body class="bodystyle">
+
+<!-- NAV -->
+<div class="firstDiv">
+    <div class="buttons">
+        <button type="button" class="addItem" onclick="window.location.href='addItems.html'">Add Item</button>
+        <button type="button" class="seeItems" onclick="window.location.href='items.html'">See Items</button>
+        <button type="button" class="addItem" onclick="window.location.href='index.html'">Home</button>
+    </div>
+    <div class="searchBar">
+        <input class="search" placeholder="Search for a lost item..." type="search">
+    </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-intro">
+    <h2>🔔 Report a Missing Item</h2>
+    <p>Tell us what you lost and we'll notify you instantly when it's found</p>
+</div>
+
+<!-- FORM -->
+<div style="display:flex;justify-content:center;padding:40px 16px 64px;">
+    <div class="ikeXarra" style="max-width:480px;width:100%;">
+        <span class="form-icon">🔍</span>
+        <h3 class="addHeaders">What did you lose?</h3>
+
+        <h1 class="boxName">Item Type</h1>
+        <div class="box_Name">
+            <select class="inputBox js-missing-type" onchange="showRelevantFields()">
+                <option value="">— Select Item Type —</option>
+                <option value="student_card">🪪 Student Card</option>
+                <option value="id_card">🪪 ID Card</option>
+                <option value="drivers_license">🚗 Driver's License</option>
+                <option value="device">💻 Device</option>
+                <option value="other_item">🎒 Other Item</option>
+            </select>
+        </div>
+
+        <!-- Student Card fields -->
+        <div class="js-field-student_card" style="display:none;">
+            <h1 class="boxName">Your Student Number</h1>
+            <div class="box_Name">
+                <input class="inputBox js-missing-student-number" placeholder="9-digit student number">
+            </div>
+            <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">
+                📧 We will automatically email you at <strong>[studentnumber]@student.uj.ac.za</strong>
+            </p>
+        </div>
+
+        <!-- ID Card fields -->
+        <div class="js-field-id_card" style="display:none;">
+            <h1 class="boxName">Your ID Number</h1>
+            <div class="box_Name">
+                <input class="inputBox js-missing-id-number" placeholder="13-digit ID number">
+            </div>
+        </div>
+
+        <!-- Driver's License fields -->
+        <div class="js-field-drivers_license" style="display:none;">
+            <h1 class="boxName">Your License Number</h1>
+            <div class="box_Name">
+                <input class="inputBox js-missing-license-number" placeholder="Driver's license number">
+            </div>
+        </div>
+
+        <!-- Device fields -->
+        <div class="js-field-device" style="display:none;">
+            <h1 class="boxName">Device Name</h1>
+            <div class="box_Name">
+                <input class="inputBox js-missing-device-name" placeholder="e.g. MacBook Pro, iPhone 14">
+            </div>
+        </div>
+
+        <!-- Other item fields -->
+        <div class="js-field-other_item" style="display:none;">
+            <h1 class="boxName">Item Description</h1>
+            <div class="box_Name">
+                <input class="inputBox js-missing-item-desc" placeholder="e.g. Black umbrella, House keys">
+            </div>
+        </div>
+
+        <!-- Email (shown for all except student card) -->
+        <div class="js-email-field" style="display:none;">
+            <h1 class="boxName">Your Email Address</h1>
+            <div class="box_Name">
+                <input class="inputBox js-missing-email" type="email" placeholder="your@email.com">
+            </div>
+            <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">
+                📧 We will email you here when your item is found
+            </p>
+        </div>
+
+        <button class="submitButton" onclick="submitMissingReport()" style="margin-top:24px;">
+            🔔 Notify Me When Found
+        </button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="aura">
+    <div class="footer-logo">Find My Stuff <span>Campus</span></div>
+    <div class="contactUs"><p class="contactUs2">Contact Us</p></div>
+    <div class="platForms">
+        <img src="../pages/images/gmail-icon-free-png.webp" class="gmail-Icon">
+        <img src="../pages/images/linkedIn_PNG27.png" class="tikTok-Icon" onclick="window.location.href='https://www.linkedin.com/in/bongani-raphiri-171868316/'">
+    </div>
+    <button class="aboutUs" type="button" onclick="window.location.href='aboutUs.html'">About Us</button>
+    <p class="copyRigt">Copyright © 2026 - Find My Stuff Campus.</p>
+</div>
+
+<script src="../script-Files/reportMissing.js"></script>
+</body>
+</html>
