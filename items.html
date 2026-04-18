@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,12 +102,12 @@
     async function loadAllItems() {
         try {
             const [cards, idCards, licenses, devices, items, bankCards] = await Promise.all([
-                fetch('http://localhost:3000/api/get-student-cards').then(r => r.json()),
-                fetch('http://localhost:3000/api/get-id-cards').then(r => r.json()),
-                fetch('http://localhost:3000/api/get-drivers-licenses').then(r => r.json()),
-                fetch('http://localhost:3000/api/get-devices').then(r => r.json()),
-                fetch('http://localhost:3000/api/get-items').then(r => r.json()),
-                fetch('http://localhost:3000/api/get-bank-cards').then(r => r.json())
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-student-cards').then(r => r.json()),
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-id-cards').then(r => r.json()),
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-drivers-licenses').then(r => r.json()),
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-devices').then(r => r.json()),
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-items').then(r => r.json()),
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-bank-cards').then(r => r.json())
             ]);
             allData.studentCards = cards;
             allData.idCards = idCards;
@@ -196,7 +198,7 @@
             ? '<p class="no-items">No items found.</p>'
             : filtered.map(item => `
                 <div class="item-card">
-                    ${item.photo ? `<img src="http://localhost:3000/uploads/${item.photo}" alt="photo">` : ''}
+                    ${item.photo ? `<img src="https://find-my-stuff-campus.onrender.com/uploads/${item.photo}" alt="photo">` : ''}
                     ${templateFn(item)}
                 </div>`).join('');
     }

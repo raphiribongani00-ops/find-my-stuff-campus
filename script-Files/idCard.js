@@ -44,7 +44,7 @@ async function addIdCard() {
     submitButton.textContent = 'Submitting...';
 
     try {
-        const response = await fetch('http://localhost:3000/api/save-id-card', {
+        const response = await fetch('https://find-my-stuff-campus.onrender.com/api/save-id-card', {
             method: 'POST',
             body: formData
         });

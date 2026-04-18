@@ -26,7 +26,7 @@ async function addBankCard() {
     submitButton.textContent = 'Submitting...';
 
     try {
-        const response = await fetch('http://localhost:3000/api/save-bank-card', {
+        const response = await fetch('https://find-my-stuff-campus.onrender.com/api/save-bank-card', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ Card_Number: cardNumber, Location: cardLocation, Date_Found: dateFound })

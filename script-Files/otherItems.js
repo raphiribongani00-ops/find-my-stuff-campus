@@ -42,7 +42,7 @@ async function addOtherItem() {
     submitButton.textContent = 'Submitting...';
 
     try {
-        const response = await fetch('http://localhost:3000/api/save-item', {
+        const response = await fetch('https://find-my-stuff-campus.onrender.com/api/save-item', {
             method: 'POST',
             body: formData
         });

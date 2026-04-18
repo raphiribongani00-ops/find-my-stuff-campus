@@ -133,10 +133,10 @@
     async function loadAllItems() {
         try {
             const [cards, devices, items, bankCards] = await Promise.all([
-                fetch('http://localhost:3000/api/get-student-cards').then(r => r.json()),
-                fetch('http://localhost:3000/api/get-devices').then(r => r.json()),
-                fetch('http://localhost:3000/api/get-items').then(r => r.json()),
-                fetch('http://localhost:3000/api/get-bank-cards').then(r => r.json())
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-student-cards').then(r => r.json()),
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-devices').then(r => r.json()),
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-items').then(r => r.json()),
+                fetch('https://find-my-stuff-campus.onrender.com/api/get-bank-cards').then(r => r.json())
             ]);
             allData.studentCards = cards;
             allData.devices = devices;
