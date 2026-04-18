@@ -211,7 +211,7 @@
         container.innerHTML = data.map(item => `
             <div class="admin-item" id="item-${item._id}">
                 <div class="admin-item-left">
-                    ${item.photo ? `<img src="${item.photo}" alt="photo">` : ''}
+                    ${item.photo && item.photo.startsWith('http') ? `<img src="${item.photo}" alt="photo">` : ''}
                     <div class="admin-item-info">
                         <p>${labelFn(item)}</p>
                         <p style="color:#9ca3af;font-size:12px;">Added: ${new Date(item.timestamp).toLocaleDateString()}</p>
