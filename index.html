@@ -35,10 +35,10 @@
         <div class="pictures"><img src="images/bankCard.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
         <div class="pictures"><img src="images/keys.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
         <div class="pictures"><img src="images/airPods.webp" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
-        <div class="pictures"><img src="images/pg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
-        <div class="pictures"><img src="images/.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
-        <div class="pictures"><img src="images/bp" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
-        <div class="pictures"><img src="images/t:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="images/nikeBag.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="images/mandelaID.jpg" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="images/drivers-licence.webp" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
+        <div class="pictures"><img src="images/pcMouse.webp" class="stdcardPic" style="height:100%;width:100%;object-fit:cover;"></div>
     </div>
     <div style="position:relative;z-index:1;">
         <h1 class="hero-title">Lost something at <span>campus?</span><br>We'll help you find it.</h1>
@@ -107,15 +107,14 @@
         <p class="contactUs2">Contact Us</p>
     </div>
     <div class="platForms">
-        <img src="images/
-        <img src="images/
+        <img src="images/gmail-icon-free-png.webp" class="gmail-Icon">
+        <img src="images/linkedIn_PNG27.png" class="tikTok-Icon" onclick="window.location.href='https://www.linkedin.com/in/bongani-raphiri-171868316/'">
     </div>
     <button class="aboutUs" type="button" onclick="window.location.href='aboutUs.html'">About Us</button>
     <p class="copyRigt">Copyright © 2026 - Find My Stuff Campus.</p>
 </div>
 
 <script>
-    // ── SLIDESHOW ──
     let slideIndex = 0;
     showSlides();
 
@@ -128,7 +127,6 @@
         setTimeout(showSlides, 2000);
     }
 
-    // ── SEARCH ──
     let allData = { studentCards: [], devices: [], items: [], bankCards: [] };
 
     async function loadAllItems() {
@@ -151,11 +149,8 @@
     function handleSearch() {
         const query = document.querySelector('.js-search').value.toLowerCase().trim();
         const resultsBox = document.querySelector('.js-search-results');
-
         if (!query) { resultsBox.style.display = 'none'; return; }
-
         const matches = [];
-
         allData.studentCards.forEach(card => {
             if (Object.values(card).some(v => String(v).toLowerCase().includes(query))) {
                 matches.push({ category: 'Student Card', title: card.Surname_Initials, detail: `Std No: ${card.Student_Number} · ${card.Location}` });
@@ -176,7 +171,6 @@
                 matches.push({ category: 'Bank Card', title: `**** **** **** ${card.Card_Number.slice(-4)}`, detail: card.Location });
             }
         });
-
         if (matches.length === 0) {
             resultsBox.innerHTML = '<p class="no-results">No items found.</p>';
         } else {
