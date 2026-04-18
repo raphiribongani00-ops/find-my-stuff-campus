@@ -168,6 +168,7 @@ const upload = multer({ storage });
 app.post('/api/save-student-card', upload.single('photo'), async (req, res) => {
     const { Surname_Initials, Student_Number, Location, Date_Found } = req.body;
     const photoPath = req.file ? req.file.secure_url || req.file.path : null;
+    console.log('Cloudinary file object:', JSON.stringify(req.file));
 
     const newCard = await StudentCard.create({ Surname_Initials, Student_Number, Location, Date_Found, photo: photoPath });
 
