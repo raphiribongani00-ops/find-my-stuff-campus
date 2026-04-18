@@ -298,4 +298,54 @@ app.post('/api/report-missing', async (req, res) => {
 
 // ── START SERVER ──
 const PORT = process.env.PORT || 3000;
+// ── ADMIN DELETE ROUTES ──
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+function checkAdmin(req, res, next) {
+    const { password } = req.body;
+    if (password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' });
+    next();
+}
+
+app.delete('/api/admin/student-card/:id', async (req, res) => {
+    const { password } = req.body;
+    if (password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' });
+    await StudentCard.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+});
+
+app.delete('/api/admin/id-card/:id', async (req, res) => {
+    const { password } = req.body;
+    if (password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' });
+    await IdCard.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+});
+
+app.delete('/api/admin/drivers-license/:id', async (req, res) => {
+    const { password } = req.body;
+    if (password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' });
+    await DriversLicense.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+});
+
+app.delete('/api/admin/device/:id', async (req, res) => {
+    const { password } = req.body;
+    if (password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' });
+    await Device.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+});
+
+app.delete('/api/admin/item/:id', async (req, res) => {
+    const { password } = req.body;
+    if (password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' });
+    await Item.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+});
+
+app.delete('/api/admin/bank-card/:id', async (req, res) => {
+    const { password } = req.body;
+    if (password !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorized' });
+    await BankCard.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+});
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
