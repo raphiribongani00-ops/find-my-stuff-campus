@@ -36,7 +36,8 @@
             font-weight: 700;
             cursor: pointer;
         }
-        .admin-panel { display: none; padding: 24px; max-width: 1000px; margin: 0 auto; }
+        #adminPanel { display: none; }
+        .admin-content { padding: 24px; max-width: 1000px; margin: 0 auto; }
         .admin-header {
             background: #0a5e56;
             color: white;
@@ -116,8 +117,7 @@
         <h1>🛠️ Admin Panel — Find My Stuff Campus</h1>
         <button onclick="logout()">Logout</button>
     </div>
-
-    <div class="admin-panel">
+    <div class="admin-content">
         <div class="admin-section">
             <h2>🪪 Student Cards</h2>
             <div id="admin-student-cards"></div>
@@ -174,7 +174,6 @@
                 fetch(`${API}/api/get-bank-cards`).then(r => r.json()),
             ]);
 
-            // If password is wrong we'll catch it on first delete — just show the panel
             document.getElementById('loginBox').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
             document.getElementById('loginError').textContent = '';
