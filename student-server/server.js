@@ -9,7 +9,7 @@ const fs = require('fs');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+
 
 // ── MONGODB CONNECTION ──
 mongoose.connect(process.env.MONGO_URI)
@@ -144,13 +144,22 @@ async function checkAndNotify(itemType, identifierKey, identifierValue, location
 }
 
 // ── MULTER ──
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
-        cb(null, 'uploads/');
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + '-' + file.originalname);
+// ── CLOUDINARY + MULTER ──
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const storage = new CloudinaryStorage({
+    cloudinary,
+    params: {
+        folder: 'find-my-stuff-campus',
+        allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'avif'],
+        transformation: [{ width: 800, crop: 'limit' }]
     }
 });
 const upload = multer({ storage });
