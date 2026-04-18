@@ -167,7 +167,7 @@ const upload = multer({ storage });
 // ── STUDENT CARDS ──
 app.post('/api/save-student-card', upload.single('photo'), async (req, res) => {
     const { Surname_Initials, Student_Number, Location, Date_Found } = req.body;
-    const photoPath = req.file ? req.file.filename : null;
+    const photoPath = req.file ? req.file.path : null;
 
     const newCard = await StudentCard.create({ Surname_Initials, Student_Number, Location, Date_Found, photo: photoPath });
 
@@ -207,7 +207,7 @@ app.get('/api/get-student-cards', async (req, res) => {
 // ── ID CARDS ──
 app.post('/api/save-id-card', upload.single('photo'), async (req, res) => {
     const { Full_Name, ID_Number, Location, Date_Found } = req.body;
-    const photoPath = req.file ? req.file.filename : null;
+    const photoPath = req.file ? req.file.path : null;
 
     const newCard = await IdCard.create({ Full_Name, ID_Number, Location, Date_Found, photo: photoPath });
     await checkAndNotify('id_card', 'ID_Number', ID_Number, Location, Date_Found);
@@ -222,7 +222,7 @@ app.get('/api/get-id-cards', async (req, res) => {
 // ── DRIVER'S LICENSES ──
 app.post('/api/save-drivers-license', upload.single('photo'), async (req, res) => {
     const { Full_Name, License_Number, Location, Date_Found } = req.body;
-    const photoPath = req.file ? req.file.filename : null;
+    const photoPath = req.file ? req.file.path : null;
 
     const newLicense = await DriversLicense.create({ Full_Name, License_Number, Location, Date_Found, photo: photoPath });
     await checkAndNotify('drivers_license', 'License_Number', License_Number, Location, Date_Found);
@@ -237,7 +237,7 @@ app.get('/api/get-drivers-licenses', async (req, res) => {
 // ── DEVICES ──
 app.post('/api/save-device', upload.single('photo'), async (req, res) => {
     const { Device_Name, Device_Type, Location, Date_Found } = req.body;
-    const photoPath = req.file ? req.file.filename : null;
+    const photoPath = req.file ? req.file.path : null;
 
     const newDevice = await Device.create({ Device_Name, Device_Type, Location, Date_Found, photo: photoPath });
     await checkAndNotify('device', 'Device_Name', Device_Name, Location, Date_Found);
@@ -252,7 +252,7 @@ app.get('/api/get-devices', async (req, res) => {
 // ── OTHER ITEMS ──
 app.post('/api/save-item', upload.single('photo'), async (req, res) => {
     const { Item_Description, Color, Location, Date_Found } = req.body;
-    const photoPath = req.file ? req.file.filename : null;
+    const photoPath = req.file ? req.file.path : null;
 
     const newItem = await Item.create({ Item_Description, Color, Location, Date_Found, photo: photoPath });
     await checkAndNotify('other_item', 'Item_Description', Item_Description, Location, Date_Found);
