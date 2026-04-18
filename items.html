@@ -196,7 +196,7 @@
             ? '<p class="no-items">No items found.</p>'
             : filtered.map(item => `
                 <div class="item-card">
-                    ${item.photo ? `<img src="https://find-my-stuff-campus.onrender.com/uploads/${item.photo}" alt="photo">` : ''}
+                    ${item.photo ? `<img src="${item.photo}" alt="photo">` : ''}
                     ${templateFn(item)}
                 </div>`).join('');
     }
